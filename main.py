@@ -79,9 +79,9 @@ class App(QWidget):
 		success = True
 
 		try:
-			mountCourses = subprocess.check_output(['C:/etc/scripts/mount.bat', usertextboxValue, passtextboxValue])
+			#mountCourses = subprocess.check_output(['C:/etc/scripts/mount.bat', usertextboxValue, passtextboxValue])
 			#\\courses.ads.carleton.edu\courses /user:ads.carleton.edu\%user% %pass%
-			#mountCourses = subprocess.check_output(['net', 'use', 'h:', '\\courses.ads.carleton.edu\courses', '/user:ads.carleton.edu\{}'.format(usertextboxValue), passtextboxValue])
+			mountCourses = subprocess.check_output(r'net use h: \\courses.ads.carleton.edu\courses /user:ads.carleton.edu\{} {}'.format(usertextboxValue, passtextboxValue))
 		except subprocess.CalledProcessError:
 			print("error")
 			success = False
